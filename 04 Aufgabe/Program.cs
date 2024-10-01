@@ -21,11 +21,18 @@ namespace _04_Aufgabe
 
             if (int.TryParse(MonthNum, out zahl ) == true)
             {
-                Console.WriteLine("Monat: " + (month[zahl - 1]));
+                if (zahl > 0 && zahl < 13) 
+                {
+                    Console.WriteLine("Monat: " + (month[zahl - 1]));
+                }
+                else 
+                {
+                    Console.WriteLine("Ungültige Zahl bitte gebe eine Zahl zwischen 1 und 12 ein.");
+                }
             }
             else
             {
-                Console.WriteLine("ungültige Zahl biite gebe eine andere zahl ein.");
+                Console.WriteLine("Ungültige Eingabe bitte gebe eine Zahl ein.");
 
             }
 
