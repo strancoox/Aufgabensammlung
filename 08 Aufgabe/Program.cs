@@ -11,26 +11,38 @@ namespace _08_Aufgabe
     {
         static void Main(string[] args)
         {
-            // Beispiel zeigen
-            int zahl = 10;
-            string bin = Convert.ToString(zahl, 2); // Konvertieren in binäre Darstellung
+            string input = "";
 
-            Console.WriteLine("Ganzzahlige Dezimalzahl (q to Quit)");
-            Console.WriteLine(zahl);
-            Console.WriteLine("Die binäre Darstellung von " + zahl + " ist: " + bin);
-
-
-            while (true) 
+            // Solange die Eingabe nicht "q" ist, lauft das Programm weiter 
+            while (input != "q")
             {
-                ConsoleKeyInfo keyInfo = Console.ReadKey(true); 
+                // Eingabe
+                Console.WriteLine("Ganzzahlige Dezimalzahl (Q to Quit)");
+                input = Console.ReadLine();
 
-               
-                if (keyInfo.Key == ConsoleKey.Q)
+                // Prüfen, ob der Benutzer "q" eingegeben hat
+                if (input == "q")
                 {
-                    break; 
+                    break;
                 }
-           
+
+                // Versuch, die Eingabe in eine Zahl umzuwandeln
+                if (int.TryParse(input, out int zahl))
+                {
+                    // Binäre Umwandlung, falls die Umwandlung erfolgt
+                    string bin = Convert.ToString(zahl, 2);
+                    Console.WriteLine("Die binäre Darstellung von " + zahl + " ist: " + bin);
+                }
+                else
+                {
+                    // Wenn die Eingabe keine gültige Zahl ist
+                    Console.WriteLine("Ungültige Eingabe, bitte gib eine Zahl ein.");
+                }
             }
+
+            // Das Programm endet, wenn "q" eingegeben wird
+            Console.WriteLine("Programm beendet.");
         }
     }
 }
+
