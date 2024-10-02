@@ -12,12 +12,12 @@ namespace _12_Aufgabe
         {
             int i = 1;
 
-            doSomething(); 
-            while (i >= 0)
+            do
             {
-                doSomething(); 
-            }
-
+                doSomething(); // kann i manipulieren 
+            } 
+            while (i >= 0);
+            doSomething();
         }
         static void doSomething()
         {
