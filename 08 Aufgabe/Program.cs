@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Diagnostics.Eventing.Reader;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,37 +14,40 @@ namespace _08_Aufgabe
     {
         static void Main(string[] args)
         {
-            // Eingabe vom Benutzer (leer)
-            string input = "";
+            string inputString = "";
 
-            // Endlose Schleife, solang die taste q nicht gedrückt wird
-            while (input != "q")
+            while (inputString.ToLower()!="q")
             {
-                // Eingabe vom Benutzer
-                Console.WriteLine("Ganzzahlige Dezimalzahl (Q to Quit)");
-                input = Console.ReadLine();
+                string bin = "";
+                Console.WriteLine("Ganzzahlige Dezimalzahl (Q to Quit):");
+                inputString = Console.ReadLine();
 
-                // Überprüfung ob der Benutzer die Taste q eingegeben hat
-                if (input == "q")
+                if (inputString.ToLower() == "q")
                 {
+                    Console.WriteLine("Programm beendet.");
                     break;
                 }
-
-                // Eingabe vom Benutzer in Zahl umwandeln, falls möglich
-                if (int.TryParse(input, out int zahl))
+  
+                if (int.TryParse(inputString, out int input))
                 {
-                    // Wenn keine richtige Zahl eingegeben wird
-                    string bin = Convert.ToString(zahl, 2);
-                    Console.WriteLine("Die binäre Darstellung von " + zahl + "ist: " + bin);
+                    do
+                    {
+                        int rest = input % 2;
+                        bin = rest + bin;
+                        input /= 2;
+                    }
+                    while (input != 0);
+                    Console.WriteLine(bin);
                 }
                 else
                 {
-                    Console.WriteLine("Üngültige Eingabe, bitte gebe eine Zahl ein.");
+                    Console.WriteLine("Ungültige Eingabe, bitte eine Ganzzahl eingeben.");
                 }
             }
-            // Ende des Programms falls "q" gedrückt wird
-            Console.WriteLine("Programm beendet");
-        }      
+            Console.WriteLine("Programm beendet.");
+        }
     }
-}
+}      
+    
+
 
