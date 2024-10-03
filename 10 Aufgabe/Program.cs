@@ -10,22 +10,8 @@ namespace _10_Aufgabe
 {
     internal class Program
     {
-        static int BerechneQuersumme(int zahl)
-        {
-            int sum = 0;
-
-            while (zahl != 0)
-            {
-                sum = sum + (zahl % 10);
-                zahl = zahl / 10;
-            }
-
-            return sum; // Gib die berechnete Quersumme zurück für die erste Eingabe
-
-        }
-        
         static void Main(string[] args)
-            {
+        {
 
             Console.WriteLine("Zahl 1: ");
             string zahl1 = Console.ReadLine();
@@ -53,6 +39,19 @@ namespace _10_Aufgabe
                 Console.WriteLine("Ungültige Eingaben. Bitte geben Sie gültige Ganzzahl ein.");
             }
             Console.ReadKey();
+        }
+        static int BerechneQuersumme(int zahl)
+        {
+            int sum = 0;
+
+            while (zahl != 0)
+            {
+                sum = sum + (zahl % 10);
+                zahl = zahl / 10;
+            }
+
+            return sum; // Gib die berechnete Quersumme zurück für die erste Eingabe
+
         }
     }
 }
